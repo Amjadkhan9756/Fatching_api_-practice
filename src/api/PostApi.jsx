@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./hold.css";
+import "./Api.css"
 
 const Holdings = () => {
   const [data, setData] = useState([]);
