@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import "./Api.css"
+import "./Api.css";
 
 const Holdings = () => {
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -26,40 +25,32 @@ const Holdings = () => {
       });
   }, []);
 
+  const handleDelete = (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
+    if (confirmDelete) {
+      setData((Data) => Data.filter((post) => post.id !== id));
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  // Filter posts by title
-  const filteredData = data.filter((post) =>
-    post.title.toLowerCase().includes(search.toLowerCase())
-  );
-
   return (
     <section className="section-post">
-      {/* Search Bar */}
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search by title..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
-
       {/* Posts Grid */}
       <div className="posts-grid">
-        {filteredData.length === 0 ? (
-          <p>No results found.</p>
-        ) : (
-          filteredData.map(({ id, title, body }) => (
-            <div className="post-card" key={id}>
-              <p><strong>{title}</strong></p>
-              <p>{body}</p>
-              <button>Edit</button>
-              <button>Delete</button>
-            </div>
-          ))
-        )}
+        {data.map(({ id, title, body }) => (
+          <div className="post-card" key={id}>
+            <p>
+              <strong>{title}</strong>
+            </p>
+            <p>{body}</p>
+            <button onClick={() => handleDelete(id)}>Delete</button>
+            <button>Edit</button>
+          </div>
+        ))}
       </div>
     </section>
   );
