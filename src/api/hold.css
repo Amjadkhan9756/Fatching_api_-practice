@@ -1,0 +1,63 @@
+/* Section background */
+
+.section-post {
+    padding: 40px;
+    background-color: #f4f4f4;
+    /* Light grey background */
+    min-height: 100vh;
+}
+
+
+/* Grid layout: 3 per row, responsive */
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* responsive */
+    gap: 24px;
+}
+
+
+/* Individual post card */
+
+.post-card {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    /* light border */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* Post content */
+
+.post-card p {
+    margin: 10px 0;
+    color: #333;
+    font-size: 15px;
+}
+
+
+/* Buttons */
+
+.post-card button {
+    margin-right: 10px;
+    padding: 8px 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-card button:hover {
+    background-color: #0056b3;
+}
